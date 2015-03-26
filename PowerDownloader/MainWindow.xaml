@@ -1,0 +1,103 @@
+﻿<Window x:Class="MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Power Downloader" Height="600" Width="800" WindowStartupLocation="CenterScreen" Icon="ark2.ico" 
+		xmlns:tb="http://www.hardcodet.net/taskbar">
+	<Grid>
+		<tb:TaskbarIcon x:Name="Notifier" 
+                  IconSource="ark2.ico"
+                  ToolTipText="Power Downloader" Visibility="Visible"/>
+		<ListView x:Name="lst" Margin="0,35,0,0" ItemsSource="{Binding Downloads}">
+			<ListView.ItemContainerStyle>
+				<Style TargetType="Control">
+					<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+					<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+				</Style>
+			</ListView.ItemContainerStyle>
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Width="25" Header="S">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<Label Background="{Binding StatusColor}"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn Width="120" Header="File Name" DisplayMemberBinding="{Binding FileName}"/>
+					<GridViewColumn Width="100" Header="Size" DisplayMemberBinding="{Binding SizeText}"/>
+					<GridViewColumn Width="100" Header="Speed" DisplayMemberBinding="{Binding SpeedText}"/>
+					<GridViewColumn Width="100" Header="Status" DisplayMemberBinding="{Binding StatusText}"/>
+					<GridViewColumn Width="190" Header="Progress">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<ProgressBar  Maximum="100" Value="{Binding ProgressText}"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn Width="100" Header="Action">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<Button IsEnabled="{Binding ActionEnabled}"
+									Content="{Binding ActionText}"
+									Click="Button_Click" Tag="{Binding Instance}"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+				</GridView>
+			</ListView.View>
+		</ListView> 
+		<ToolBarTray  VerticalAlignment="Top"  >
+			<ToolBar>
+				<Button ToolTip="Add Download" Click="AddDownload">
+					<Image Source="icons/Add.png" ></Image>
+				</Button>
+				<Button ToolTip="Remove Download" Click="RemoveDownload">
+					<Image Source="icons/Remove.png" ></Image>
+				</Button>
+				<Button ToolTip="Remove All" Click="RemoveAll">
+					<Image Source="icons/Disaster.png" ></Image>
+				</Button>
+			</ToolBar>
+			<ToolBar>
+				<Button ToolTip="Start Download" Click="StartDownload">
+					<Image Source="icons/Go.png" ></Image>
+				</Button>
+				<Button ToolTip="Stop Download" Click="StopDownload">
+					<Image Source="icons/stop.png" ></Image>
+				</Button>
+			</ToolBar>
+			<ToolBar>
+				<Button ToolTip="Start All" Click="StartAll">
+					<Image Source="icons/Forward.png" ></Image>
+				</Button>
+				<Button ToolTip="Stop All" Click="StopAll">
+					<Image Source="icons/close.png" ></Image>
+				</Button>
+			</ToolBar>
+			<ToolBar>
+				<Button ToolTip="Export Data" Click="ExportAll">
+					<Image Source="icons/Save.png" ></Image>
+				</Button>
+				<Button ToolTip="Import Data" Click="ImportAll">
+					<Image Source="icons/Load.png" ></Image>
+				</Button>
+			</ToolBar>
+			<ToolBar >
+				<Button ToolTip="Application Settings" Click="ShowSettings">
+					<Image Source="icons/Application.png" ></Image>
+				</Button>
+			</ToolBar>
+			<ToolBar>
+				<Button ToolTip="Help" Click="ShowHelp">
+					<Image Source="icons/Help.png" ></Image>
+				</Button>
+				<Button ToolTip="About" Click="ShowAbout">
+					<Image Source="icons/about.png" ></Image>
+				</Button>
+				<Button ToolTip="Exit" Click="ExitApp">
+					<Image Source="icons/Exit.png"  ></Image>
+				</Button>
+			</ToolBar>
+		</ToolBarTray>
+	</Grid>
+</Window>

@@ -1,0 +1,18 @@
+﻿<Window x:Class="DownloadAdder"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Add Download" Height="163" Width="438" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" >
+	<Grid>
+		<Label HorizontalAlignment="Left" Width="93" Height="26" VerticalAlignment="Top">Add Download:</Label>
+		<TextBox x:Name="txtURL" Height="24" Margin="98,31,10,0" TextWrapping="Wrap" VerticalAlignment="Top" AcceptsReturn="False" TextChanged="txtURL_TextChanged"/>
+		<TextBox x:Name="txtSavePath" Height="24" Margin="98,60,10,0" TextWrapping="Wrap" VerticalAlignment="Top" AcceptsReturn="False"/>
+		<Label HorizontalAlignment="Left" Width="83" Height="24" VerticalAlignment="Top" Content="URL:" Margin="10,31,0,0"/>
+		<Label HorizontalAlignment="Left" Width="83" Height="24" VerticalAlignment="Top" Content="Save Path:" Margin="10,60,0,0"/>
+		<Button  HorizontalAlignment="Right" Height="22" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="32" Click="Button_Click"  ToolTip="Cancel">
+			<Image Source="icons/No.png"/>
+		</Button>
+		<Button   HorizontalAlignment="Right" Height="22" Margin="0,0,47,10" VerticalAlignment="Bottom" Width="35" Click="Button_Click_1" ToolTip="Add Download">
+			<Image Source="icons/OK.png"></Image>
+		</Button>
+	</Grid>
+</Window>

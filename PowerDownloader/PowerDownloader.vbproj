@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0D10DB5-60CE-44B0-8A8B-C5248281E56D}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Atosoft.Net.DownloadEngine</RootNamespace>
+    <AssemblyName>PowerDownloader</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PowerDownloader.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PowerDownloader.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ark2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification">
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.5\lib\net45\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Application.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="SettingsDialog.xaml.vb">
+      <DependentUpon>SettingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DownloadAdder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="APIs.vb" />
+    <Compile Include="Application.xaml.vb">
+      <DependentUpon>Application.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DownloadAdder.xaml.vb">
+      <DependentUpon>DownloadAdder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.vb">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="SettingsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Shapes" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWpfExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.WPF.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <AppDesigner Include="My Project\" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Add.png" />
+    <Resource Include="icons\Application.png" />
+    <Resource Include="icons\Apply.png" />
+    <Resource Include="icons\Close.png" />
+    <Resource Include="icons\Copy.png" />
+    <Resource Include="icons\Download.png" />
+    <Resource Include="icons\Erase.png" />
+    <Resource Include="icons\Error.png" />
+    <Resource Include="icons\Folder.png" />
+    <Resource Include="icons\Info.png" />
+    <Resource Include="icons\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\3d bar chart.png" />
+    <Resource Include="icons\Abort.png" />
+    <Resource Include="icons\About.png" />
+    <Resource Include="icons\Anchor.png" />
+    <Resource Include="icons\Back.png" />
+    <Resource Include="icons\Bad mark.png" />
+    <Resource Include="icons\Blue key.png" />
+    <Resource Include="icons\Blue tag.png" />
+    <Resource Include="icons\Boss.png" />
+    <Resource Include="icons\Bottom.png" />
+    <Resource Include="icons\Calculator.png" />
+    <Resource Include="icons\Calendar.png" />
+    <Resource Include="icons\Car key.png" />
+    <Resource Include="icons\CD.png" />
+    <Resource Include="icons\Clipboard.png" />
+    <Resource Include="icons\Clock.png" />
+    <Resource Include="icons\Compass.png" />
+    <Resource Include="icons\Component.png" />
+    <Resource Include="icons\Create.png" />
+    <Resource Include="icons\Cut.png" />
+    <Resource Include="icons\Danger.png" />
+    <Resource Include="icons\Database.png" />
+    <Resource Include="icons\Delete.png" />
+    <Resource Include="icons\Delivery.png" />
+    <Resource Include="icons\Dial.png" />
+    <Resource Include="icons\Disaster.png" />
+    <Resource Include="icons\Dollar.png" />
+    <Resource Include="icons\Down.png" />
+    <Resource Include="icons\E-mail.png" />
+    <Resource Include="icons\Eject.png" />
+    <Resource Include="icons\Euro.png" />
+    <Resource Include="icons\Exit.png" />
+    <Resource Include="icons\Fall.png" />
+    <Resource Include="icons\Fast-forward.png" />
+    <Resource Include="icons\Favourites.png" />
+    <Resource Include="icons\Female.png" />
+    <Resource Include="icons\Filter.png" />
+    <Resource Include="icons\Find.png" />
+    <Resource Include="icons\First record.png" />
+    <Resource Include="icons\First.png" />
+    <Resource Include="icons\Flag.png" />
+    <Resource Include="icons\Forbidden.png" />
+    <Resource Include="icons\Forward.png" />
+    <Resource Include="icons\Free bsd.png" />
+    <Resource Include="icons\Go back.png" />
+    <Resource Include="icons\Go forward.png" />
+    <Resource Include="icons\Go.png" />
+    <Resource Include="icons\Good-mark.png" />
+    <Resource Include="icons\Green tag.png" />
+    <Resource Include="icons\Heart.png" />
+    <Resource Include="icons\Help book 3d.png" />
+    <Resource Include="icons\Help book.png" />
+    <Resource Include="icons\Help.png" />
+    <Resource Include="icons\Hint.png" />
+    <Resource Include="icons\Home.png" />
+    <Resource Include="icons\How-to.png" />
+    <Resource Include="icons\Hungup.png" />
+    <Resource Include="icons\Key.png" />
+    <Resource Include="icons\Last recor.png" />
+    <Resource Include="icons\Last.png" />
+    <Resource Include="icons\Left-right.png" />
+    <Resource Include="icons\Lightning.png" />
+    <Resource Include="icons\Linux.png" />
+    <Resource Include="icons\List.png" />
+    <Resource Include="icons\Load.png" />
+    <Resource Include="icons\Lock.png" />
+    <Resource Include="icons\Low rating.png" />
+    <Resource Include="icons\Mail.png" />
+    <Resource Include="icons\Male.png" />
+    <Resource Include="icons\Medium rating.png" />
+    <Resource Include="icons\Message.png" />
+    <Resource Include="icons\Mobile-phone.png" />
+    <Resource Include="icons\Modify.png" />
+    <Resource Include="icons\Movie.png" />
+    <Resource Include="icons\Music.png" />
+    <Resource Include="icons\New document.png" />
+    <Resource Include="icons\New.png" />
+    <Resource Include="icons\Next track.png" />
+    <Resource Include="icons\Next.png" />
+    <Resource Include="icons\No-entry.png" />
+    <Resource Include="icons\No.png" />
+    <Resource Include="icons\Notes.png" />
+    <Resource Include="icons\OK.png" />
+    <Resource Include="icons\Paste.png" />
+    <Resource Include="icons\Pause.png" />
+    <Resource Include="icons\People.png" />
+    <Resource Include="icons\Person.png" />
+    <Resource Include="icons\Phone number.png" />
+    <Resource Include="icons\Pie chart.png" />
+    <Resource Include="icons\Pinion.png" />
+    <Resource Include="icons\Play-music.png" />
+    <Resource Include="icons\Play.png" />
+    <Resource Include="icons\Playback.png" />
+    <Resource Include="icons\Previous record.png" />
+    <Resource Include="icons\Previous.png" />
+    <Resource Include="icons\Problem.png" />
+    <Resource Include="icons\Question.png" />
+    <Resource Include="icons\Raise.png" />
+    <Resource Include="icons\Record.png" />
+    <Resource Include="icons\Red mark.png" />
+    <Resource Include="icons\Red star.png" />
+    <Resource Include="icons\Red tag.png" />
+    <Resource Include="icons\Redo.png" />
+    <Resource Include="icons\Refresh.png" />
+    <Resource Include="icons\Remove.png" />
+    <Resource Include="icons\Repair.png" />
+    <Resource Include="icons\Report.png" />
+    <Resource Include="icons\Retort.png" />
+    <Resource Include="icons\Rewind.png" />
+    <Resource Include="icons\Sad.png" />
+    <Resource Include="icons\Search.png" />
+    <Resource Include="icons\Shopping cart.png" />
+    <Resource Include="icons\Smile.png" />
+    <Resource Include="icons\Sound.png" />
+    <Resource Include="icons\Stop sign.png" />
+    <Resource Include="icons\Stop.png" />
+    <Resource Include="icons\Sync.png" />
+    <Resource Include="icons\Table.png" />
+    <Resource Include="icons\Target.png" />
+    <Resource Include="icons\Taxi.png" />
+    <Resource Include="icons\Terminate.png" />
+    <Resource Include="icons\Text preview.png" />
+    <Resource Include="icons\Text.png" />
+    <Resource Include="icons\Thumbs down.png" />
+    <Resource Include="icons\Thumbs up.png" />
+    <Resource Include="icons\Top.png" />
+    <Resource Include="icons\Turn off.png" />
+    <Resource Include="icons\Undo.png" />
+    <Resource Include="icons\Unlock.png" />
+    <Resource Include="icons\Up-down.png" />
+    <Resource Include="icons\Up.png" />
+    <Resource Include="icons\Update.png" />
+    <Resource Include="icons\Upload.png" />
+    <Resource Include="icons\User group.png" />
+    <Resource Include="icons\View.png" />
+    <Resource Include="icons\Warning.png" />
+    <Resource Include="icons\Wrench.png" />
+    <Resource Include="icons\Yes.png" />
+    <Resource Include="icons\Zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ark2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\License.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
