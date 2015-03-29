@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PowerDownloader", "PowerDownloader\PowerDownloader.vbproj", "{D0D10DB5-60CE-44B0-8A8B-C5248281E56D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PowerDownloaderInstaller", "PowerDownloaderInstaller\PowerDownloaderInstaller.vbproj", "{05424F73-98CE-4047-A74A-5B68419A3F2B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{D0D10DB5-60CE-44B0-8A8B-C5248281E56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0D10DB5-60CE-44B0-8A8B-C5248281E56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0D10DB5-60CE-44B0-8A8B-C5248281E56D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05424F73-98CE-4047-A74A-5B68419A3F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05424F73-98CE-4047-A74A-5B68419A3F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05424F73-98CE-4047-A74A-5B68419A3F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05424F73-98CE-4047-A74A-5B68419A3F2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

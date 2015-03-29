@@ -15,6 +15,12 @@ Public Module APIs
 	Friend OFD As New Microsoft.Win32.OpenFileDialog
 	Friend FBD As New System.Windows.Forms.FolderBrowserDialog
 
+	Public ReadOnly Property AppPath As String
+		Get
+			Return IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Atosoft\Downloader")
+		End Get
+	End Property
+
 	Public Sub SaveAll()
 		Settings.Save()
 		DownloadManager.Save()
@@ -22,6 +28,41 @@ Public Module APIs
 	Public Sub LoadAll()
 		Settings.Load()
 		DownloadManager.Load()
+	End Sub
+
+	Public Sub CauseUnhandledError(ex As Exception)
+		MsgBox(ex.ToString, MsgBoxStyle.Critical, "Unhandled Error")
+		End
+	End Sub
+
+	Public Sub PreStart()
+		IO.Directory.SetCurrentDirectory(IO.Path.GetDirectoryName(Settings.ExePath))
+
+		Dim di1 As New IO.DirectoryInfo(IO.Directory.GetCurrentDirectory)
+		Dim di2 As New IO.DirectoryInfo(AppPath)
+
+		If Not di2.Exists Then
+			di2.Create()
+		End If
+
+		If di1.FullName.ToLower <> di2.FullName.ToLower Then
+			Dim Target = IO.Path.Combine(AppPath, IO.Path.GetFileName(Settings.ExePath))
+			IO.File.Copy(Settings.ExePath, Target, True)
+			Process.Start(Target)
+			End
+		End If
+
+		If Process.GetProcessesByName(IO.Path.GetFileNameWithoutExtension(Settings.ExePath)).Count > 1 Then
+			End
+		End If
+
+		If Not IO.File.Exists("PresentationFramework.Aero.dll") Then
+			IO.File.WriteAllBytes("PresentationFramework.Aero.dll", My.Resources.PresentationFramework_Aero)
+		End If
+
+		If Not IO.File.Exists("Hardcodet.Wpf.TaskbarNotification.dll") Then
+			IO.File.WriteAllBytes("Hardcodet.Wpf.TaskbarNotification.dll", My.Resources.Hardcodet_Wpf_TaskbarNotification)
+		End If
 	End Sub
 
 End Module

@@ -314,5 +314,11 @@
   <ItemGroup>
     <Resource Include="icons\License.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\PresentationFramework.Aero.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\Hardcodet.Wpf.TaskbarNotification.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
