@@ -36,6 +36,15 @@ Public Module APIs
 	End Sub
 
 	Public Sub PreStart()
+#If CONFIG = "Debug" Then
+		Return
+#End If
+
+		'Minimizing Startup impact
+		'Wait for 10 seconds
+
+		Thread.Sleep(10000)
+
 		IO.Directory.SetCurrentDirectory(IO.Path.GetDirectoryName(Settings.ExePath))
 
 		Dim di1 As New IO.DirectoryInfo(IO.Directory.GetCurrentDirectory)
@@ -63,6 +72,16 @@ Public Module APIs
 		If Not IO.File.Exists("Hardcodet.Wpf.TaskbarNotification.dll") Then
 			IO.File.WriteAllBytes("Hardcodet.Wpf.TaskbarNotification.dll", My.Resources.Hardcodet_Wpf_TaskbarNotification)
 		End If
+
+		If Not IO.File.Exists("MahApps.Metro.dll") Then
+			IO.File.WriteAllBytes("MahApps.Metro.dll", My.Resources.MahApps_Metro)
+		End If
+
+		If Not IO.File.Exists("Hardcodet.Wpf.TaskbarNotification.dll") Then
+			IO.File.WriteAllBytes("System.Windows.Interactivity.dll", My.Resources.System_Windows_Interactivity)
+		End If
+
+
 	End Sub
 
 End Module
@@ -390,7 +409,6 @@ Public Class DownloadableObject
 		Using Resp = Req.GetResponse
 			_Length = Resp.ContentLength
 		End Using
-		_Status = DownloadStatus.Idle
 	End Sub
 
 	''' <summary>
@@ -468,7 +486,7 @@ Public Class DownloadableObject
 			If Stopped Then Exit Do
 			Try
 				_Status = DownloadStatus.Starting
-				GetLength()
+				Task.Run(AddressOf GetLength)
 				Initialize()
 				_Status = DownloadStatus.Working
 				Do

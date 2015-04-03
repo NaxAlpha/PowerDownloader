@@ -73,9 +73,29 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Byte[].
         '''</summary>
+        Friend ReadOnly Property MahApps_Metro() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MahApps_Metro", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
         Friend ReadOnly Property PresentationFramework_Aero() As Byte()
             Get
                 Dim obj As Object = ResourceManager.GetObject("PresentationFramework_Aero", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property System_Windows_Interactivity() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("System_Windows_Interactivity", resourceCulture)
                 Return CType(obj,Byte())
             End Get
         End Property

@@ -1,7 +1,8 @@
-﻿<Window x:Class="SettingsDialog"
+﻿<ma:MetroWindow x:Class="SettingsDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Settings" Height="181" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
+    Title="Settings" Height="181" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
+		xmlns:ma="http://metro.mahapps.com/winfx/xaml/controls">
 	<Grid>
 		<Button Content="Browse" HorizontalAlignment="Right" Height="25" Margin="0,10,10,0" VerticalAlignment="Top" Width="57" Click="Button_Click"/>
 		<TextBox x:Name="txtSavePath" Height="25" Margin="110,10,72,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Mode=TwoWay,Path=Settings.SavePath,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
@@ -17,4 +18,4 @@
 		<CheckBox IsChecked="{Binding Path=Settings.StartOnAdded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Content="Start Automatically when added" Margin="527,105,54,0" VerticalAlignment="Top"  Height="15" />
 		<CheckBox IsChecked="{Binding Settings.StartOnStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Start Download When Application Started" Margin="317,75,206,0" VerticalAlignment="Top"  Height="15" />
 	</Grid>
-</Window>
+</ma:MetroWindow>

@@ -205,6 +205,18 @@ Class MainWindow
 		End Try
 	End Sub
 
+	Public Sub SaveFrame(fn As String)
+		Dim rtb As New RenderTargetBitmap(CInt(Me.ActualWidth), CInt(Me.ActualHeight), 96, 96, PixelFormats.Pbgra32)
+		rtb.Render(Me)
+
+		Dim png As New PngBitmapEncoder()
+		png.Frames.Add(BitmapFrame.Create(rtb))
+		Using f = IO.File.OpenWrite(fn)
+			png.Save(f)
+		End Using
+
+	End Sub
+
 	Public Sub Init() Handles Me.Initialized
 		Try
 
@@ -261,6 +273,9 @@ Class MainWindow
 		SaveAll()
 	End Sub
 
+	Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+		SaveFrame("1.png")
+	End Sub
 End Class
 Public Class ShowCommand
 	Implements ICommand
